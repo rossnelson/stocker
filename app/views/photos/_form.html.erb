@@ -1,0 +1,44 @@
+<%= form_for @photo, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :filename, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :filename, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :source, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :source, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :unique_usage_right, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :unique_usage_right, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :unique_usage_right_filename, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :unique_usage_right_filename, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :shared_usage_right_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :shared_usage_right_id, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                photos_path, :class => 'btn' %>
+  </div>
+<% end %>
