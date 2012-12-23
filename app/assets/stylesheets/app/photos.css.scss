@@ -1,0 +1,25 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import '../plugins/grid.css.scss';
+
+.uploader-button { @include grid(100%); }
+.uploader { @include column(12); }
+
+.photos { 
+  @include grid(100%);
+
+  .thumb { @include column(1); }
+  .info { @include column(3); }
+  .photo-form { @include column(4); }
+}
+
+.photo-wrap {
+  padding: 10px;
+  border: 1px solid rgb(195, 195, 195);
+  background: rgb(243, 243, 243);
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
