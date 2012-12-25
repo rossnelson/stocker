@@ -4,6 +4,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :title
       t.string :filename
       t.string :source
+      t.text :comments
       t.boolean :unique_usage_right
       t.string :unique_usage_right_filename
       t.references :shared_usage_right

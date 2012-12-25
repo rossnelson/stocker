@@ -1,44 +1,85 @@
-<%= form_for @photo, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :filename, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :filename, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :source, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :source, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :unique_usage_right, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :unique_usage_right, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :unique_usage_right_filename, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :unique_usage_right_filename, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :shared_usage_right_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :shared_usage_right_id, :class => 'number_field' %>
-    </div>
-  </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#photo_tag_list').tokenInput("/tags", {
+        theme: 'facebook',
+        prePopulate: <%= raw @photo.tag_list.to_json %>
+      });
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                photos_path, :class => 'btn' %>
-  </div>
-<% end %>
+  });
+</script>
+
+<div class="grid">
+  <%= form_for @photo, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+    <div class="row">
+      <div class="columns four">
+        <div class="control-group">
+          <%= f.label :filename, "Photo", :class => 'control-label' %>
+          <div class="controls">
+            <%= f.file_field :filename, :class => 'text_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :title, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :title, :class => 'text_field' %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns four">
+        <div class="control-group">
+          <%= f.label :source, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :source, :class => 'text_field' %>
+          </div>
+        </div>
+        <!--
+        <div class="control-group">
+          <%= f.label :unique_usage_right, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.check_box :unique_usage_right, :class => 'check_box' %>
+          </div>
+        </div>
+        -->
+        <div class="control-group">
+          <%= f.label :tag_list, :class => 'control-label' %>
+          <div class="controls tag-list">
+            <%= f.text_field :tag_list, :class => 'text_field' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns four">
+        <div class="control-group">
+          <%= f.label :shared_usage_right_id, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.number_field :shared_usage_right_id, :class => 'number_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :unique_usage_right_filename, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.file_field :unique_usage_right_filename, :class => 'text_field' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns twelve">
+        <div class="control-group">
+          <%= f.label :comments, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :comments, :class => '' %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-actions row">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  photos_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</div>

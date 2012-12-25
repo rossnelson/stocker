@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ()->
+
+
   Stocker.init()
 
   uploader = new qq.FineUploaderBasic(
@@ -13,8 +15,12 @@ $(document).ready ()->
         authenticity_token: $('meta[name="csrf-token"]').attr('content')
     callbacks:
       onComplete: (id, fileName, responseJSON)-> 
+        Stocker.spinner.stop()
         photo = new Stocker.Photo(responseJSON)
         view = new Stocker.PhotoShow(model: photo)
         view.render()
+      onSubmit: (id, fileName)->
+        Stocker.spinner.spin($('.spinner')[0])
+    
   )
 

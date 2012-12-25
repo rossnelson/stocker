@@ -1,31 +1,67 @@
-<%- model_class = Photo -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @photo.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:filename) %>:</strong></dt>
-  <dd><%= image_tag @photo.filename.url(:thumb) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:source) %>:</strong></dt>
-  <dd><%= @photo.source %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unique_usage_right) %>:</strong></dt>
-  <dd><%= @photo.unique_usage_right %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:unique_usage_right_filename) %>:</strong></dt>
-  <dd><%= @photo.unique_usage_right_filename %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:shared_usage_right_id) %>:</strong></dt>
-  <dd><%= @photo.shared_usage_right_id %></dd>
-</dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              photos_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_photo_path(@photo), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              photo_path(@photo),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<div class="photo-show">
+
+  <div class="image">
+    <%= image_tag @photo.filename.url %>
+    
+    <br/>
+    <div class="title"><h5><%= link_to @photo.title, @photo.filename.url %></h5></div>
+  </div>
+  <div class="photo-info">
+    <div class="photo-user">
+      Uploaded By Ross Nelson
+      <br />
+      ross_nelson
+    </div>
+    <div class="dates">
+      This photo was uploaded <%= @photo.created_at.strftime('%y-%m-%d') %> 
+    </div>
+    <% unless @photo.similar.blank? %>
+      <div class="similar-photos">
+        <div class="title">Similar Photos</div>
+
+        <% @photo.similar.each do |photo| %>
+          <%= link_to image_tag(photo.filename.url(:thumb)), photo %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="tags">
+      <div class="title">Tags</div>
+      <ul class="available-tags token-input-list-facebook">
+        <% @photo.tag_list.each do |tag| %>
+          <li class="token-input-token-facebook">
+            <p><%= link_to tag[:name], tag_path(tag[:id]) %></p><i class="icon-tag"></i>
+          </li> 
+        <% end %>
+      </ul>
+      
+    </div>
+    <div class="comments">
+      <div class="title">Comments</div>
+      <p>
+        <%= raw @photo.comments %>
+      </p>
+    </div>
+
+    <div class="usage-rights">
+      <div class="title">Usage Rights </div>
+      <%= @photo.source %>
+    </div>
+
+
+    <div class="form-actions">
+      <%= link_to t('.back', :default => t("helpers.links.back")),
+                  photos_path, :class => 'btn'  %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                  edit_photo_path(@photo), :class => 'btn' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                  photo_path(@photo),
+                  :method => 'delete',
+                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                  :class => 'btn btn-danger' %>
+    </div>
+  </div>
+
 </div>

@@ -8,7 +8,7 @@ class UsageRightUploadersController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @photo.update_attributes :unique_usage_right_filename => file
 
-    render :json => {:success => true, :filename => @photo.unique_usage_right_filename.url}
+    render :json => {:success => true, :filename => @photo.unique_usage_right_filename_identifier}
   end
 
 end

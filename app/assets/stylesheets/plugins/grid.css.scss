@@ -77,5 +77,18 @@ $col-width: 8.33%;
   height: 0;
 }
 
-.grid { @include grid(); }
+.row { @include row(); }
+.grid { @include grid(100%, 1200px); }
+.column.one { @include column(1) }
+.columns.two { @include column(2) }
+.columns.three { @include column(3) }
+.columns.four { @include column(4) }
+.columns.five { @include column(5) }
+.columns.six { @include column(6) }
+.columns.seven { @include column(7) }
+.columns.eight { @include column(8) }
+.columns.nine { @include column(9) }
+.columns.ten { @include column(10) }
+.columns.eleven { @include column(11) }
+.columns.twelve { @include column(12) }
 

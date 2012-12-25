@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215024815) do
+ActiveRecord::Schema.define(:version => 20121224231305) do
 
   create_table "photos", :force => true do |t|
     t.string   "title"
@@ -20,13 +20,30 @@ ActiveRecord::Schema.define(:version => 20121215024815) do
     t.boolean  "unique_usage_right"
     t.string   "unique_usage_right_filename"
     t.integer  "shared_usage_right_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.text     "comments",                    :limit => 2147483647
   end
 
   add_index "photos", ["shared_usage_right_id"], :name => "index_photos_on_shared_usage_right_id"
 
   create_table "shared_usage_rights", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["photo_id"], :name => "index_taggings_on_photo_id"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

@@ -19,18 +19,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">KOZAK</a>
+        <%= link_to "STOCKER", root_url, :class => 'brand' %>
         <div class="nav-collapse">
           <ul class="nav span5">
-            <li><%= link_to "Users", users_path %></li>
+            <%= render 'layouts/nav_links' %>
           </ul>
-          <div class="login-info span5">
-            <% if current_user %>
-              Logged in as <%= current_user.email %>.
-              <%= link_to "Log Out", logout_path %>
-            <% else %>
-              <%= link_to "Log In", login_path %>
-            <% end %>
         </div>
         </div>
    </div>

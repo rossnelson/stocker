@@ -1,6 +1,13 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :filename, :title, :tags, :unique_usage_right_filename, :source
+  include Taggert
+
+  attr_accessible :filename, :title, :tags, :unique_usage_right_filename, 
+    :source, :unique_usage_right, :shared_usage_right_id, :comments, :tag_list
+
   belongs_to :shared_usage_right
+  has_many :taggings
+  has_many :tags, :through => :taggings
+
   mount_uploader :filename, ImageUploader
   mount_uploader :unique_usage_right_filename, FileUploader
 
@@ -13,12 +20,12 @@ class Photo < ActiveRecord::Base
   end
 
   def to_builder
-    asset = Jbuilder.new
+    json = Jbuilder.new
 
-    asset.(self, :id, :success, :url, :filename_identifier)
-    asset.image 
+    json.(self, :id, :success, :url, :filename_identifier)
+    json.image 
 
-    asset
+    json
   end
 
 end

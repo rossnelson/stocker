@@ -1,19 +1,23 @@
 <script id="photo-template" type="text/x-handlebars-template">
 
   <div class="photo">
-    <div class="thumb">
-      <img src="{{url}}" width="50" />
-    </div>
 
+    <div class="file-name">
+      <h3><%= link_to "{{filename_identifier}}", "{{photo_url}}" %></h3>
+    </div>
     <div class="info">
       <div class="remove btn">
         <i class="icon-remove-sign"></i>
         remove
       </div>
-      <div class="file-name">
-        {{filename_identifier}}
-      </div>
     </div>
+
+    <div class="thumb">
+      <%= link_to "{{photo_url}}" do %>
+        <img src='{{url}}' />
+      <% end %>
+    </div>
+
 
     <div class="photo-form">
       <%= label_tag "Title" %>
@@ -21,6 +25,7 @@
       <%= label_tag "Source" %>
       <%= select_tag "source", options_for_select([['Getty', 'getty'], ['iStock Photo', 'istock']]) %>
     </div>
+
     <div class="photo-form">
       <%= label_tag "Tag List" %>
       <%= text_field_tag "tag_list" %>
@@ -32,6 +37,8 @@
         </div>
       </div>
     </div>
+
+    <div class="server-status"></div>
 
   </div>
 

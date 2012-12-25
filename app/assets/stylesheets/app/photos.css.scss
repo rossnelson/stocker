@@ -3,15 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import '../plugins/grid.css.scss';
 
-.uploader-button { @include grid(100%); }
+.uploader-button { @include grid(100%, 1200px); }
 .uploader { @include column(12); }
 
+.spinner {height: 30px;}
 .photos { 
-  @include grid(100%);
+  @include grid(100%, 1200px);
 
-  .thumb { @include column(1); }
-  .info { @include column(3); }
+  .photo-wrap { position:relative; }
+  .thumb { @include column(2); }
+  .info { @include column(2);
+    height: 48px;
+    margin-top: 15px;}
+  .file-name { @include column(10); word-break:break-all; }
+  .remove { display:block; }
   .photo-form { @include column(4); }
+  #title {padding: 12px;}
+  .server-status {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .icon-ok-circle {
+      font-size: 27px;
+      color: lightGreen;
+      position: absolute;
+      right: 24px;
+      top: 28px;
+    }
+  }
 }
 
 .photo-wrap {
@@ -22,4 +44,52 @@
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
+}
+
+.photo-show {
+  @include grid(100%, 1200px);
+  margin-bottom: 20px;
+  .image { @include column(9); }
+  .photo-info { @include column(3); }
+
+  .photo-user, .dates  {
+    border-bottom: 1px solid rgb(195, 195, 195);
+    padding: 0 0 10px 0;
+    margin-bottom: 10px;
+  }
+  .title {
+    border-bottom: 1px dashed rgb(207, 207, 207);
+    margin: 0 0 7px 0;
+  }
+  .similar-photos { margin-top: 50px; } 
+  .similar-photos, .tags, .comments, .usage-rights { margin-bottom:50px;}
+  .comments p {color: rgb(51, 51, 51);font-size: 12px;line-height: 125%;}
+}
+
+.photos-index {
+  .photo {
+    @include column(3);
+
+    .photo-title {
+      padding-top: 9px;
+    }
+  }
+}
+
+#edit_photo_1 {
+
+  #photo_comments {
+    width: 100%;
+    height: 84px;
+  }
+
+  .text_field[type="text"], .number_field {
+    padding: 12px !important;
+  }
+
+  .controls.tag-list {
+    width: 54%;
+
+    .token-input-list-facebook { width:100%; }
+  }
 }

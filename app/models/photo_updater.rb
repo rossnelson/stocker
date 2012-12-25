@@ -1,4 +1,5 @@
 class PhotoUpdater
+  include Kozak::Application.routes.url_helpers
 
   def initialize(id=0, photo_attrs={})
     @photo = Photo.find id
@@ -15,8 +16,19 @@ class PhotoUpdater
   def sanitized_attr
     {
       :title => @attrs[:title],
-      :source => @attrs[:source]
+      :source => @attrs[:source],
+      :tags => build_tags #@attrs[:tag_list]
     }
   end
+
+  def build_tags
+    tags = TagBuilder.new(:tag_list => @attrs[:tag_list])
+    tags.run
+  end
+
+  def url
+    photo_path @photo.id
+  end
+
 
 end
