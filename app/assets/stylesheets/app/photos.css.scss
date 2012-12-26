@@ -69,7 +69,10 @@
 .photos-index {
   .photo {
     @include column(3);
-
+    img { 
+      max-height: 188px;
+      display: block;
+      margin: 0 auto; }
     .photo-title {
       padding-top: 9px;
     }
