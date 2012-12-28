@@ -1,5 +1,6 @@
 window.Stocker = 
   Photos: {}
+  Tags: {}
   init: ()->
     new Stocker.Router()
     Backbone.history.start({ pushState: true })
@@ -7,12 +8,15 @@ window.Stocker =
 
 Stocker.Router = Backbone.Router.extend(
   routes:
-    "bulk/photo/upload" : "index"
+    "photos" : "search"
 
-  index: ()->
-    #photos = new Stocker.Photos(window.photos)
-    #photos.render()
-    @
+  search: ()->
+    tags = new Stocker.Tags(window.tags)
+    tags.render()
+    collection = new Stocker.Photos(window.photos)
+    Stocker.photos = new Stocker.PhotosView(collection: collection)
+    Stocker.photos.render()
+
 )
 
 # Spinner Init

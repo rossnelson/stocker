@@ -1,45 +1,22 @@
+
+<script type="text/javascript">
+  window.tags = <%= raw @tags.to_json %>
+  window.photos = <%= raw @photos.to_json %>
+</script>
+
+<%= render 'photos/photo_teaser' %>
+<%= render 'tags/tag_js' %>
+
 <div class="search">
   <div class="input-list">
-    <ul class="available-tags token-input-list-facebook">
-     <li class="token-input-token-facebook"><p>Porta Justo</p><i class="icon-remove"></i></li> 
+    <ul class="tags-in-use token-input-list-facebook">
     </ul>
   </div>
-  <div class="submit">Apply Filter</div>
   <div class="filters">
-    <div class="filter">Filter</div>
     <div class="tags"><i class="icon-tags"></i></div>
   </div>
 </div>
 <ul class="available-tags token-input-list-facebook">
- <li class="token-input-token-facebook"><p>Porta Justo</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Ullamcorper Aenean</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Tellus</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Euismod Pharetra</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dolor</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dapibus Malesuada Vulputate</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Porta Justo</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Ullamcorper Aenean</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Tellus</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Euismod Pharetra</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dolor</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dapibus Malesuada Vulputate</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Porta Justo</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Ullamcorper Aenean</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Tellus</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Euismod Pharetra</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dolor</p><i class="icon-tag"></i></li> 
- <li class="token-input-token-facebook"><p>Dapibus Malesuada Vulputate</p><i class="icon-tag"></i></li> 
 </ul>
 
-<div class="photos photos-index">
-  <% @photos.each do |photo| %>
-    <div class="photo">
-      <div class="photo-wrap">
-        <%= link_to image_tag(photo.filename.url), photo %>
-        <div class="photo-title">
-          <%= link_to photo.title, photo %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<div class="photos photos-index"></div>

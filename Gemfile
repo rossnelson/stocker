@@ -7,6 +7,7 @@ gem 'sorcery'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jbuilder'
+gem 'rabl'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

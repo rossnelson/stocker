@@ -11,9 +11,9 @@ Stocker.PhotoShow = Backbone.View.extend({
     "focusout input" : "submitForm"
     "change #source" : "submitForm"
 
-  render: ()->
+  render: (template='#photo-template')->
     self = @
-    template = Handlebars.compile($('#photo-template').html())
+    template = Handlebars.compile($(template).html())
     window.model = @model
     @.$el.html template(self.model.attributes)
     $('.photos').prepend self.el

@@ -3,7 +3,8 @@ class PhotosController < ApplicationController
   respond_to :html, :json
 
   def index
-    @photos = Photo.all
+    @tags = Tag.all
+    @photos = Photo.all.map{|p| p.to_builder }
   end
 
   def show

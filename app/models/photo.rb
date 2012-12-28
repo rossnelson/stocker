@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+  include Kozak::Application.routes.url_helpers
   include Taggert
 
   attr_accessible :filename, :title, :tags, :unique_usage_right_filename, 
@@ -23,9 +24,9 @@ class Photo < ActiveRecord::Base
     json = Jbuilder.new
 
     json.(self, :id, :success, :url, :filename_identifier)
-    json.image 
+    json.photo_url photo_path(self)
 
-    json
+    json.attributes!
   end
 
 end

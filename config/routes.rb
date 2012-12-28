@@ -1,6 +1,7 @@
 Kozak::Application.routes.draw do
 
   get "bulk/photo/upload" => "photos#bulk", :as => "bulk_photos"
+  match "photos/from/tags" => "searches#photos_from_tags", :as => "photos_from_tags"
 
   resources :tags
   resources :photos
@@ -13,4 +14,5 @@ Kozak::Application.routes.draw do
   resources :users
   resources :sessions
   root :to => "users#index"
+
 end

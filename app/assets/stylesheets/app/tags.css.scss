@@ -29,7 +29,7 @@
     font-size: 11px;
   }
 
-  .available-tags.token-input-list-facebook {
+  .tags-in-use, .available-tags.token-input-list-facebook {
     border: none;
     background: none;
     padding: 0;
@@ -48,7 +48,6 @@
       float: left;
       text-transform: uppercase;
       line-height: 32px;
-      width: 75px;
       border: 1px solid rgb(195, 195, 195);
       height: 33px;
       padding: 0 12px;
