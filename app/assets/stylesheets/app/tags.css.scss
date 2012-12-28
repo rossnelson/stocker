@@ -1,5 +1,16 @@
 @import '../plugins/grid.css.scss';
 
+#token-input- {
+margin: 6px;
+background: transparent;
+}
+
+.input-list .token-input-list-facebook {
+background: transparent;
+border: none;
+float: left;
+}
+
 .search {
   @include grid(100%, 1200px);
   position:relative;

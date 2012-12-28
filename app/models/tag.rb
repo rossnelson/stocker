@@ -2,12 +2,14 @@ class Tag < ActiveRecord::Base
   has_many :taggings
   has_many :photos, :through => :taggings
 
-  def self.query_all(query='')
+  def self.query_all(query='', create=true)
     tags = Tag.order('title')
     tags = tags.where('title LIKE ?', "%#{query}%") unless query.blank?
 
     tags_hash = tags.map{ |tag| {:id => tag.id, :name => tag.title} }
-    tags_hash.concat([{:id => "new-#{query}", :name => query}]) unless query_match(tags, query)
+    unless create == "false"
+      tags_hash.concat([{:id => "new-#{query}", :name => query}]) unless query_match(tags, query)
+    end
 
     tags_hash
   end

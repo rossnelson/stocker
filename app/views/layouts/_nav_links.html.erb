@@ -3,8 +3,7 @@
 <li><%= link_to "Find A Photo", photos_path %></li>
 <% if current_user %>
   <li>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", logout_path %>
+    <%= link_to "Log Out", logout_path %>
   </li>
 <% else %>
   <li>

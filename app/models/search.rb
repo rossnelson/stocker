@@ -2,10 +2,17 @@ class Search
 
   attr_accessor :tags
 
-  def initialize(tags={})
-    tag_ids = tags.map{|t| t[:id] }
-    @tags = Tag.find tag_ids
+  def initialize(titles={})
+    #tag_ids = tags.map{|t| t[:id] }
+    @titles = titles
+    @tags = find_tags# Tag.find tag_ids
     @photos = @tags.map{|tag| tag.photos }.flatten.uniq
+  end
+
+  def find_tags
+    @titles.map! do |tag|
+      Tag.find_by_title tag['title']
+    end
   end
 
   def find_photos

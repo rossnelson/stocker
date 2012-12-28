@@ -3,9 +3,11 @@ class Photo < ActiveRecord::Base
   include Taggert
 
   attr_accessible :filename, :title, :tags, :unique_usage_right_filename, 
-    :source, :unique_usage_right, :shared_usage_right_id, :comments, :tag_list
+    :source, :unique_usage_right, :shared_usage_right_id, :comments, :tag_list,
+    :user, :user_id
 
   belongs_to :shared_usage_right
+  belongs_to :user
   has_many :taggings
   has_many :tags, :through => :taggings
 
@@ -27,6 +29,12 @@ class Photo < ActiveRecord::Base
     json.photo_url photo_path(self)
 
     json.attributes!
+  end
+
+  def cleanup_tags
+    tags.each do |tag|
+      tag.destroy if tag.photos.count == 1 
+    end
   end
 
 end

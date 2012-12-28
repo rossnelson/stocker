@@ -39,6 +39,7 @@ Stocker.PhotoShow = Backbone.View.extend({
         params:
           authenticity_token: $('meta[name="csrf-token"]').attr('content')
           photo_id: @model.id
+
       callbacks:
         onComplete: (id, fileName, responseJSON)-> 
           self.$el.find('#uploader').html(responseJSON.filename)

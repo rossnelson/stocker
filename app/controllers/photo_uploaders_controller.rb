@@ -13,7 +13,7 @@ class PhotoUploadersController < ApplicationController
   end
 
   def update
-    @photo = PhotoUpdater.new(params[:id], params[:photo_uploader])
+    @photo = PhotoUpdater.new(current_user, params[:id], params[:photo_uploader])
     respond_with @photo.update
   end
 

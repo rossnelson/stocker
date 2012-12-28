@@ -1,7 +1,8 @@
 class PhotoUpdater
   include Kozak::Application.routes.url_helpers
 
-  def initialize(id=0, photo_attrs={})
+  def initialize(user, id=0, photo_attrs={})
+    @user = user
     @photo = Photo.find id
     @attrs = photo_attrs
   end
@@ -17,7 +18,8 @@ class PhotoUpdater
     {
       :title => @attrs[:title],
       :source => @attrs[:source],
-      :tags => build_tags #@attrs[:tag_list]
+      :tags => build_tags, #@attrs[:tag_list]
+      :user => @user
     }
   end
 

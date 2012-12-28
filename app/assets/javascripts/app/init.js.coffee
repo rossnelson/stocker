@@ -8,10 +8,11 @@ window.Stocker =
 
 Stocker.Router = Backbone.Router.extend(
   routes:
-    "photos" : "search"
+    "photos" :  "search"
+    ""       :  "search"
 
   search: ()->
-    tags = new Stocker.Tags(window.tags)
+    tags = new Stocker.TagShow()
     tags.render()
     collection = new Stocker.Photos(window.photos)
     Stocker.photos = new Stocker.PhotosView(collection: collection)

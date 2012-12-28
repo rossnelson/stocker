@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_filter :require_login
+
   respond_to :html, :json
 
   def index
@@ -24,7 +26,7 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo = PhotoUpdater.new(params[:id], params[:photo])
+    @photo = PhotoUpdater.new(current_user, params[:id], params[:photo])
 
     if @photo.update
       redirect_to @photo.url, notice: 'Photo was successfully updated.'
@@ -35,6 +37,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
+    @photo.cleanup_tags
     @photo.destroy
 
     redirect_to photos_url

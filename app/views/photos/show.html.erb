@@ -1,5 +1,3 @@
-
-
 <div class="photo-show">
 
   <div class="image">
@@ -10,9 +8,9 @@
   </div>
   <div class="photo-info">
     <div class="photo-user">
-      Uploaded By Ross Nelson
+      Uploaded By <%= @photo.user.username.titleize %>
       <br />
-      ross_nelson
+      <%= @photo.user.email %>
     </div>
     <div class="dates">
       This photo was uploaded <%= @photo.created_at.strftime('%y-%m-%d') %> 
@@ -32,7 +30,7 @@
       <ul class="available-tags token-input-list-facebook">
         <% @photo.tag_list.each do |tag| %>
           <li class="token-input-token-facebook">
-            <p><%= link_to tag[:name], tag_path(tag[:id]) %></p><i class="icon-tag"></i>
+            <p><%= tag[:name] %></p><i class="icon-tag"></i>
           </li> 
         <% end %>
       </ul>
