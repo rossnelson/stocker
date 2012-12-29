@@ -10,7 +10,11 @@
 .photos { 
   @include grid(100%, 1200px);
 
-  .photo-wrap { position:relative; }
+  .photo-wrap {
+    position:relative; 
+    min-height: 217px;
+    max-height: 204px;
+  }
   .thumb { @include column(2); }
   .info { @include column(2);
     height: 48px;
