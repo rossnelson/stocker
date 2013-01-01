@@ -15,7 +15,14 @@
     min-height: 217px;
     max-height: 204px;
   }
-  .thumb { @include column(2); }
+  .thumb {
+    @include column(2); 
+    img {
+      max-height: 126px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
   .info { @include column(2);
     height: 48px;
     margin-top: 15px;}

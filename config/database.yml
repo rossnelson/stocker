@@ -1,10 +1,10 @@
 development:
   adapter: mysql2
   encoding: utf8
-  host: ganon.imagemanagement.com
+  host: 
   database: stocker
   username: stocker
-  password: vo-hy-jugh-waf
+  password: 
 
 test:
   adapter: mysql2
@@ -19,7 +19,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  host: ganon.imagemanagement.com
+  host: 
   database: stocker
   username: stocker
-  password: vo-hy-jugh-waf
+  password: 

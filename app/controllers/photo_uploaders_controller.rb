@@ -8,7 +8,7 @@ class PhotoUploadersController < ApplicationController
 
   def create
     file = AppSpecificStringIO.new(params[:qqfile], request.raw_post)
-    @photo = Photo.create :filename => file
+    @photo = Photo.create :filename => file, :user => current_user
     redirect_to photo_uploader_path(@photo.id)
   end
 
