@@ -15,5 +15,5 @@
 vim config/database.yml  
 rake db:migrate
 ~~~~
-setup default user
+setup default user  
 login and upload
