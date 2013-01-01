@@ -1,9 +1,19 @@
-###Not ready for use...
+## Stocker : Image tagging and searching application.
 
-Upon encountering this error:  
-`.../ruby-1.9.3-p0@kozak/gems/mysql2-0.3.11/lib/mysql2/mysql2.bundle: [BUG] Segmentation fault`
+#### Libraries used
 
-Uninstall the mysql2 gem  
-`gem uninstall mysql2`  
-Then reinstall it  
-`gem install mysql2`
+- Ruby on Rails
+- Jquery TokenInput
+- Finuploader
+- Backbone.js
+- Sorcery Authentication
+- Twitter Bootstrap
+
+## Setup
+
+~~~
+vim config/database.yml  
+rake db:migrate
+~~~~
+setup default user  
+login and upload
